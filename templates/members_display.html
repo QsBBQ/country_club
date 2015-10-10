@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+  <h1 class="page-header">Dashboard</h1>
+  <h2 class="sub-header">Section title</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Member</th>
+          <th>Family Name</th>
+          <th>Relationship</th>
+          <th>Date Created</th>
+          <th>Date Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for family_member in member.family_members %}
+        <tr>
+          <td>{{ family_member.members.name }}</td>
+          <td>{{ family_member.name }} </td>
+          <td>{{ family_member.relation }}</td>
+          <td>{{ family_member.create_date }}</td>
+          <td>{{ family_member.last_modified }}</td>
+        </tr>
+        {% endfor %}}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

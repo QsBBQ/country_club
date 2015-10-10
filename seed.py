@@ -23,10 +23,14 @@ for i in range(1, 6):
     club = Club(name="club"+str(i),
                 description="Beautiful club" + str(i)
                 )
+    s.add(club)
+    s.commit()
     for i in range(1, 6):
         member = Member(name=faker.name(),
                         username=faker.user_name()
                         )
+        s.add(member)
+        s.commit()
         for i in range(3):
             if i == 0:
                 familymember = FamilyMember(name=faker.name(),
@@ -40,10 +44,6 @@ for i in range(1, 6):
                                             member_id=member.id)
                 s.add(familymember)
                 s.commit()
-        s.add(member)
-        s.commit()
         member_join = MemberClubJoin(club=club,
                                      member=member,
                                      tag="Legacy club member")
-    s.add(club)
-    s.commit()
