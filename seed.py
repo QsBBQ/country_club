@@ -47,3 +47,5 @@ for i in range(1, 6):
         member_join = MemberClubJoin(club=club,
                                      member=member,
                                      tag="Legacy club member")
+        s.add(member_join)
+        s.commit()

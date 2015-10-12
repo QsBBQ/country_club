@@ -65,8 +65,8 @@ class Member(Base):
     create_date = Column(DateTime, default=datetime.datetime.now())
     last_modified = Column(DateTime, onupdate=datetime.datetime.now)
     # Relationships
-    members = relationship("Club", secondary="member_club_join",
-                           backref="members",
+    clubs = relationship("Club", secondary="member_club_join",
+                           backref="backref_members",
                            cascade="all, delete-orphan",
                            single_parent=True)
     family_members = relationship("FamilyMember", backref=backref("members"),
@@ -93,8 +93,8 @@ class Club(Base):
     create_date = Column(DateTime, default=datetime.datetime.now())
     last_modified = Column(DateTime, onupdate=datetime.datetime.now)
     # Club Relationships
-    clubs = relationship("Member", secondary="member_club_join",
-                         backref="clubs", cascade="all, delete-orphan",
+    members = relationship("Member", secondary="member_club_join",
+                         backref="backref_clubs", cascade="all, delete-orphan",
                          single_parent=True)
 
 
